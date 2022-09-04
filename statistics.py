@@ -36,14 +36,67 @@
     
 #----------------
 
+import re
+
+# This function takes valid inputs untill user leaves an empty string
 def getInput():
     number_read = input()
     number_list = []
     while number_read != '':
-        number_list.append(number_read)
+        if isValid(number_read):
+            number_list.append(number_read)
+        else:
+            print("Invalid Input")
         number_read = input()
     return number_list
 
+
+# This function checks whether the input s is valid or not
+# Valid input is of the form "{player 1} : {player 2} : {scoreline}",
+# {player 1} and {player 2} are name of players, string of eng letters
+# {score} is valid tennis match score
+# all are acse and blankspace insensitive
+def isValid(s):
+    if match:=re.search(r"^[A-Za-z0-9 ]+:[A-Za-z0-9 ]+:([-0-9, ]+)$",s):
+        return scoreValid(match.group(1))    
+    else:
+        return False
+
+
+# This function checks whether the score is valid tennis match score
+def scoreValid(s):
+    sets=s.split(',')
+    if len(sets)>5 or len(sets)<2:
+        return False
+    if not all([re.search(r"^ *[01234567] *- *[01234567] *$", i) for i in sets]):
+        return False
+    for i in sets:
+        game=[int(j) for j in i.split("-")]
+        if (6 not in game) and (7 not in game):
+            return False
+        if 7 in game:
+            k=game.index(7)
+            if k==0:
+                if game[1]>6:
+                    return False
+            elif k==1:
+                if game[0]>6:
+                    return False
+        elif 6 in game:
+            k=game.index(6)
+            if k==0:
+                if game[1]>4:
+                    return False
+            elif k==1:
+                if game[0]>4:
+                    return False
+    return True
+
+
+# This function takes a complete score of a match and returns 
+# the number of sets for the wining player, the number of sets for the defeated player,
+# the number of games for the wining player, the number of games for the defeated player
+# respectively as a tuple
 def wlset(l):
     (n,m,g1,g2)=(0,0,0,0)
     for i in l:
