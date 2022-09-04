@@ -10,6 +10,7 @@
 #
 #    It prints  a summary in decreasing order of ranking, where the ranking is according to the criteria 1-6 in that order
 
+# An Example:
 
 #   input:
 
@@ -52,8 +53,8 @@ def getInput():
 
 
 # This function checks whether the input s is valid or not
-# Valid input is of the form "{player 1} : {player 2} : {scoreline}",
-# {player 1} and {player 2} are name of players, string of eng letters
+# Valid input is of the form "{won player} : {defeated player} : {scoreline}",
+# {won player} and {defeated player} are name of players, string of eng letters
 # {score} is valid tennis match score
 # all are acse and blankspace insensitive
 def isValid(s):
