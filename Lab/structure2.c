@@ -27,14 +27,15 @@ int main()
         return 1;
     }
 
-    // char *name1, *program1;
-    // int roll1, num_courses1;
-
+    
+    // Scanning the information of the students form stdin, the input should be in the form:
+    // Name ProgramName roll numberOfCourses (Subject marks) for the courses taken, one example of the input format:
+    // Harry MCS 11 3 Probability 80 Computer 90 ML 84
     for (int i = 0; i < num_students; i++)
     {
         scanf("%s%s%d%d", students[i].name, students[i].program, &students[i].roll, &students[i].num_courses);
         students[i].grades = (grade *) malloc (students[i].num_courses * sizeof(grade));
-        // char *courses[students[i].num_courses];
+        
         
         for(int j = 0; j < students[i].num_courses; j++)
         {
@@ -42,11 +43,11 @@ int main()
         }
     }
 
-    // 
     
+    // Printing the name of the students, followed by Program, roll, and their marks
     for (int i = 0; i < num_students; i++)
     {
-        printf("Name: %s, Program: %s,Roll:  %d ", students[i].name, students[i].program, students[i].roll);
+        printf("Name: %s, Program: %s, Roll: %d ", students[i].name, students[i].program, students[i].roll);
         printf("Marks: ");
         for(int j = 0; j < students[i].num_courses; j++)
         {
@@ -54,4 +55,12 @@ int main()
         }
         printf("\n");
     }
+    
+
+    for (int i = 0; i < num_students; i++)
+    {
+        free(students[i].grades);
+    }
+
+    free(students);
 }
