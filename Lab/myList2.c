@@ -17,6 +17,7 @@ LIST* create_list(void)
 
 }
 
+/*
 void print_list(LIST* L)
 {
     for (int i = 0; i < L->size; i++)
@@ -74,22 +75,21 @@ void append(LIST* L, int a)
 //     L.size = 0;
 // }
 
-
+*/
 
 int main()
 {
-    LIST* L = (LIST*)calloc(1,sizeof(LIST));
-    L = create_list();
-    append(L, 9);
-    append(L, 1);
-    append(L, 2);
-    append(L, 3);
-    append(L, 6);
-    append(L, 7);
-    append(L, 8);
-    append(L, 4);
-    append(L, 2);
-    append(L, 3);
+    LIST* L = create_list();
+    // append(L, 9);
+    // append(L, 1);
+    // append(L, 2);
+    // append(L, 3);
+    // append(L, 6);
+    // append(L, 7);
+    // append(L, 8);
+    // append(L, 4);
+    // append(L, 2);
+    // append(L, 3);
     // L = prepend(L, 9);
     // L = prepend(L, 9);
     // L = prepend(L, 9);
@@ -100,7 +100,7 @@ int main()
     // L = prepend(L, 9);
     // L = prepend(L, 9);
     // L = prepend(L, 9);
-    print_list(L);
+    // print_list(L);
     // L = deletelast(L);
     // print_list(L);
     // L = deletefirst(L);
